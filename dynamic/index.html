@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+        background: rgb(238,174,202);
+        background: linear-gradient(137deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+    .carousel-item,img{
+        height: 90vh;
+
+    }
+    .carousel-caption,p,h5{
+        color: #fff;
+        font-size: larger;
+    }    
+    .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 5px 5px 5px  ;
+            background-size: cover;
+            color: #fff;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #card-section{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 25px;
+        }
+        #card1{
+            background-image: url("https://cdn.pixabay.com/photo/2017/03/14/03/20/woman-2141808_960_720.jpg");
+
+        }
+        #card2{
+            background-image: url("https://cdn.pixabay.com/photo/2016/10/24/23/00/heart-1767552_640.jpg");
+        }
+        #card3{
+            background-image: url("https://cdn.pixabay.com/photo/2021/08/17/18/23/brain-6553821_640.jpg");
+        }
+        #card4{
+            background-image: url("data:image/jpeg;base64,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");
+        }
+        #card5{
+            background-image: url("https://cdn.pixabay.com/photo/2016/11/13/16/26/bear-1821473_640.jpg");
+        }
+        #card6{
+            background-image: url("https://cdn.pixabay.com/photo/2021/11/11/16/06/face-6786616_640.jpg");
+        }
+        #dept,#about{
+            font-size: larger;
+            font-weight: 800;
+            color: #0056b3;
+        }
+    a:link{
+        text-decoration: none;
+        color: rgba(0, 128, 0, 0.822);
+    }
+    a:link:hover{
+        color: white;
+    }
+    .col{
+        height: 500px;
+    }
+ 
+</style>
+<body>
+    <!-- nav bar start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background: rgb(238,174,202);
+background: linear-gradient(137deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">DEMO HOSPITAL</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Departments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#aboutus">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contanct Us</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li> -->
+            </ul>
+            <form class="d-flex" role="search">
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+              <button class="btn btn-outline-success" type="submit"><a href="form">Book An Appointment</a></button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- nav bar ends -->
+       <!-- carousel starts -->
+      <div id="carouselExampleDark" class="carousel carousel-dark slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://cdn.pixabay.com/photo/2022/12/29/05/37/heart-7684233_960_720.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block" style="    position: absolute;
+          top: 40%;
+          height: auto;
+      ">
+            <a href="form" class="button">Book Your Appointment</a>
+                
+          </div>
+            <div class="carousel-caption d-none d-md-block">
+                
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://cdn.pixabay.com/photo/2022/05/06/03/58/coronavirus-7177434_640.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block" style="    position: absolute;
+            top: 40%;
+            height: auto;
+        ">
+              <a href="form" class="button">Book Your Appointment</a>
+                  
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://cdn.pixabay.com/photo/2019/06/17/17/57/stethoscope-4280497_640.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block" style="    position: absolute;
+            top: 40%;
+            height: auto;
+        ">
+              <a href="form" class="button">Book Your Appointment</a>
+                  
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!-- carousel ends  -->
+       <!-- card section  -->
+        <div class="container" id="card-section">
+       <div class="card" id="card1">
+        <h2>Meet a Doctor</h2>
+        <p>Book Appointment</p>
+        <a href="form" class="button">Book</a>
+    </div>
+    <div class="card" id="card1">
+        <h2>Emergency Number</h2>
+        <p>0000000000</p>
+        <!-- <a href="#" class="button">Click Me</a> -->
+    </div>
+        </div>
+        <div style="display: flex; justify-content: center; padding: 30px;"> <h1 id="dept">OUR DEPARTMENTS</h1></div>
+    <div class="container" style="display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;">
+       
+        <div class="container" id="card-section">
+            <div class="card" id="card2">
+             <h2>Cardiology</h2>
+             <p>Heart</p>
+             <a href="form" class="button">Book an Appointment</a>
+         </div>
+    </div>
+    <div class="container" id="card-section">
+        <div class="card" id="card3">
+         <h2>Neurology</h2>
+         <p>Neurological disorder</p>
+         <a href="form" class="button">Book an Appointment</a>
+        </div>
+    </div>
+    <div class="container" id="card-section">
+        <div class="card" id="card4">
+         <h2>Oncology</h2>
+         <p>Cancer</p>
+         <a href="form" class="button">Book an Appointment</a>
+        </div>
+    </div>
+    <div class="container" id="card-section">
+        <div class="card" id="card5">
+         <h2>Pediatries</h2>
+         <p>Chlidren</p>
+         <a href="form" class="button">Book an Appointment</a>
+        </div>
+    </div>
+    <div class="container" id="card-section">
+        <div class="card" id="card6">
+         <h2>Dermatology</h2>
+         <p>Skin</p>
+         <a href="form" class="button">Book an Appointment</a>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="aboutus">
+    <h2 id="about" style="display: flex; justify-content: center; padding: 30px;">ABOUT US</h2>
+    <div class="row" style="display: flex; padding: 30px;  background-color: #fff; border-radius: 25px;">
+        <div class="col" style="box-shadow: 5px 5px 5px;">
+            <H2>ABOUT US</H2>
+            <p style="color: black; font: weight 400px; ;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit tempore ut aperiam debitis ipsam qui esse eius explicabo, officia aspernatur praesentium, a ad expedita excepturi sunt natus. Ipsum, nam saepe?</p>
+            
+        </div>
+        <div class="col" style="box-shadow: 5px 5px 5px;background-image: url('https://cdn.pixabay.com/photo/2022/05/06/03/58/coronavirus-7177434_640.jpg'); background-size: cover;">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
